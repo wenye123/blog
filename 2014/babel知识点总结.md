@@ -55,5 +55,4 @@ rules: [
 ## 3. babel-polyfill和babel-runtime的区别
 
 - `babel-polyfill`在文件头直接`import`，直接修改全局变量，缺点会污染全局变量，而且会全局打包进`bundle`
-- `babel-runtime`是分散的`polyfill`模块，可以单独引入自己想要的`helper`，缺点是手动引入效率低，可以使用插件`babel-plugin-transform-runtime`自动化处理，但是还是有缺点是无法识别实例方法如[1, 2, 3].includes()
-
+- `babel-runtime`是分散的`polyfill`模块，可以单独引入自己想要的`helper`，缺点是手动引入效率低，可以使用插件`babel-plugin-transform-runtime`自动化处理，但是还是有缺点是无法识别实例方法如`[1, 2, 3].includes()`

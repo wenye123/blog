@@ -111,7 +111,6 @@ class Koa {
     return context
   }
 }
-
 ```
 
 ### async中间件使用demo
@@ -172,4 +171,3 @@ app.use(m3)
 app.listen(3000)
 //有请求时候输出:  1 2 3 3 2 1
 ```
-

@@ -24,7 +24,7 @@ function Promise (fn) {
       })
     })
   }
-  
+
   // 立即执行promise传入的函数
   fn(resolve)
 }
@@ -37,7 +37,6 @@ promise.then(val => {
 }).then(val => {
   console.log(val)
 })
-
 ```
 
 ## 增强版
@@ -156,7 +155,6 @@ test.then((val) => {
 }, err => {
   console.log(err.message)
 })
-
 ```
 
 ## 按照PromiseA+规范完善

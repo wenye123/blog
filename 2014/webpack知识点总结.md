@@ -4,7 +4,7 @@
 module.exports = {
   // 1. 入口文件
   entry: './src/main.js', // string | object | array
-  
+
   // 2. 出口文件
   output: {
     path: path.resolve(__dirname, 'dist'), // 出口文件的绝对路径
@@ -12,7 +12,7 @@ module.exports = {
     publicPath: 'https://cdn.com', // 引用出口文件的路径前缀
     chunkFilename: [chunkhash].js, // 分块文件名字
   },
-  
+
   // 3. 模块配置(配置loader等)
   module: {
     rules: [ // 加载loader的规则
@@ -26,39 +26,38 @@ module.exports = {
       }
     ]
   },
-  
+
   // 4. resolve模块解析请求，其实就是将js的模块查找实现一遍
   resolve: {
     modules: ['node_modules'], // 用于查找模块的目录
     extendsions: ['.js'], // 使用的扩展名
     alias: {'vue$': 'vue/dist/vue.esm.js'}, // 设置别名
   },
-  
+
   // 5. devtool配置source map
   devtool: 'source-map',
-  
+
   // 6. 不打包的模块
   externals: ['react'],
-  
+
   // 7. 开发配置
   devServer: {
-  	port: 8080, // webpack-dev-server的端口
-  	host: 'localhost', // 服务的host
-  	allowedHosts: ['xx.com'], // 允许访问服务的host
+      port: 8080, // webpack-dev-server的端口
+      host: 'localhost', // 服务的host
+      allowedHosts: ['xx.com'], // 允许访问服务的host
     proxy: {'/api': 'http://localhost:3000'}, // 配置代理
     contentBase: path.join(__dirname, 'public'), // 静态文件地址 boolean | string | array
     overlay: false, // 是否将编译器的错误显示在浏览器 boolean | object
     hot: true, // 启用热更新 搭配插件webpack.HotModuleReplacementPlugin()
     inline: true, // 使用内联模式，搭配热更新
   },
-  
+
   // 8. 插件
   plugins: [new HtmlWebpackPlugin()],
-  
+
   // 9. webpack的主目录(entry和loader相对于此目录解析)
   context: __dirname
 }
-
 ```
 
 ## 修改配置达到更好的开发体验
@@ -81,7 +80,7 @@ entry: {
 new webpack.optimize.CommonsChunkPlugin({
   name: 'common', // 指定公共类库的名字
   minChunks: function (moudle, count) {
-  	return (module.context && module.indexOf('node_modules') !== -1) || count >= 2
+      return (module.context && module.indexOf('node_modules') !== -1) || count >= 2
   }
 })
 
@@ -93,10 +92,11 @@ entry: {
 new webpack.optimize.CommonsChunkPlugin({
   name: 'vendor', 
   minChunks: function (moudle, count) {
-  	return (module.context && module.indexOf('node_modules') !== -1) || count >= 2
+      return (module.context && module.indexOf('node_modules') !== -1) || count >= 2
   }
 })
 ```
+
 ### 2. 代码分割(懒加载)
 
 ```javascript
@@ -120,7 +120,6 @@ new webpack.optimize.CommonsChunkPlugin({
   async: 'async-common',
   minChunks: 2
 })
-
 ```
 
 ### 3. 缓存
@@ -236,7 +235,7 @@ module.exports = {
         new webpack.HashedModuleIdsPlugin(),
         // 提取公共库插件
         new webpack.optimize.CommonsChunkPlugin({
-            name : ["vendor", "manifest"],			// 指定公共bundle的名称
+            name : ["vendor", "manifest"],            // 指定公共bundle的名称
             minChunks : function(moudle) {
                 return module.context && module.indexOf("node_modules") !== -1;     // 设置引入的vendor存在于node_moudles目录中
             }
@@ -316,6 +315,4 @@ if (process.env.NODE_ENV === 'production') {
         })
     ])
 }
-
 ```
-
