@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "push": "git add . && git commit -m \"更新\" && git push"
+    "push": "git add . && git commit -m \"更新\" && git push origin main"
   },
   "dependencies": {
     "cos-nodejs-sdk-v5": "^2.12.5",
