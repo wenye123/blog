@@ -1,5 +1,14 @@
 {
   "scripts": {
     "push": "git add . && git commit -m \"更新\" && git push"
+  },
+  "dependencies": {
+    "cos-nodejs-sdk-v5": "^2.12.5",
+    "markdown-ast": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.10",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }
